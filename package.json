@@ -19,5 +19,9 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "react-bootstrap": "^2.7.2"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "jest": "^29.5.0"
   }
 }
