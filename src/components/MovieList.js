@@ -6,7 +6,6 @@ import fetchAPI from '../utils/API'
 
 const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
-  const [movieLoaded, setMovieLoaded] = useState(false);
 
   useEffect(() => {
     fetchAPI({'s': props.searchTerm || 'super'})
