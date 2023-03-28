@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Col } from 'react-bootstrap';
 
-import { Modal, Button } from 'react-bootstrap';
+import MovieModal from './MovieModal'
 
 import fetchAPI from '../utils/API'
+
+import './MovieCard.scss';
 
 const MovieCard = (props) => {
   const [movie, setMovie] = useState([]);
@@ -16,32 +19,14 @@ const MovieCard = (props) => {
   }, []);
 
   return(
-    <div className="movie">
-      <div className="movie-card" onClick={handleShow}>
-        <h2>{movie.Title}</h2>
+    <>
+      <Col md="4" className="movie-card" onClick={handleShow}>
+        <h3>{movie.Title}</h3>
         <div className="movie-year">{movie.Year}</div>
         <img src={movie.Poster} />
-      </div>
-      <Modal show={modal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{movie.Title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="modal-year">{movie.Year}</div>
-          <div className="modal-rated">{movie.Rated}</div>
-          <div className="modal-released">{movie.Released}</div>
-          <div className="modal-runtime">{movie.Runtime}</div>
-          <div className="modal-genre">{movie.Genre}</div>
-          <div className="modal-director">{movie.Director}</div>
-          <div className="modal-writer">{movie.Writer}</div>
-          <div className="modal-actors">{movie.Actors}</div>
-          <div className="modal-plot">{movie.Plot}</div>
-          <div className="modal-language">{movie.Language}</div>
-          <div className="modal-country">{movie.Country}</div>
-          <div className="modal-poster"><img src={movie.Poster} /></div>
-        </Modal.Body>
-      </Modal>
-    </div>
+      </Col>
+      <MovieModal modal={modal} handleClose={handleClose} {...movie}/>
+    </>
   );
 }
 
