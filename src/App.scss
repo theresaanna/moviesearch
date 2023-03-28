@@ -6,5 +6,6 @@ $white: rgb(255, 255, 255);
 $dark-gray: rgb(102, 102, 102);
 
 .App.container-fluid {
+  background-color: $light-gray;
   padding: 0;
 }

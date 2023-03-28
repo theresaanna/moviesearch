@@ -5,6 +5,8 @@ import MovieCard from './MovieCard'
 
 import fetchAPI from '../utils/API'
 
+import './MovieList.scss';
+
 const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
 
@@ -14,16 +16,13 @@ const MovieList = (props) => {
   }, []);
 
   return (
-    <Container fluid className="movie">
+    <Container fluid className="movies">
       <Row>
         <Col><h2>Movie List</h2></Col>
       </Row>
       <Row className="movie-list">
-        {movies.map(movie => {
-          return(
-              <MovieCard {...movie}/>
-          )
-        })};
+        {movies.map(movie => <MovieCard {...movie}/>
+        )};
       </Row>
     </Container>
   );
