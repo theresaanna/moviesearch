@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { act } from '@testing-library/react'
+import { act } from '@testing-library/react';
 
-import MovieCard from './MovieCard.js'
+import MovieCard from './MovieCard.jsx';
 
-import fetchAPI from '../utils/API.js'
+import fetchAPI from '../utils/API.js';
 
 import './MovieList.scss';
 
 const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetchAPI({'s': props.searchTerm || 'super'})
-      .then(movies => act(() => setMovies(movies.Search)));
+    const fetchData = async () => {
+      await fetchAPI({'s': props.searchTerm || 'super'})
+        .then(movies => act(() => setMovies(movies.Search)))
+        .catch(error => setError(error));
+    }
+    fetchData();
   }, []);
 
   return (
@@ -22,8 +27,9 @@ const MovieList = (props) => {
         <Col><h2>Movie List</h2></Col>
       </Row>
       <Row className="movie-list">
+        {error && <div>{error}</div>}
         {movies?.map(movie => <MovieCard {...movie}/>
-        )};
+        )}
       </Row>
     </Container>
   );
