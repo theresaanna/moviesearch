@@ -2,9 +2,9 @@
   "name": "moviesearch",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.4",
     "react": "^18.2.0",
@@ -37,9 +37,15 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "babel-jest": "^29.5.0",
     "bootstrap": "^5.2.3",
+    "jest": "^27.5.1",
+    "jest-environment-jsdom": "^29.5.0",
+    "jest-mock-axios": "^4.7.1",
     "node-sass": "^7.0.3",
     "react-bootstrap": "^2.7.2",
+    "react-test-renderer": "^18.2.0",
     "sass": "^1.60.0"
   }
 }

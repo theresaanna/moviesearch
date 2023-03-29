@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Col } from 'react-bootstrap';
 
-import MovieModal from './MovieModal'
+import MovieModal from './MovieModal.js'
 
-import fetchAPI from '../utils/API'
+import fetchAPI from '../utils/API.js'
 
 import './MovieCard.scss';
 

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { act } from '@testing-library/react'
 
-import MovieCard from './MovieCard'
+import MovieCard from './MovieCard.js'
 
-import fetchAPI from '../utils/API'
+import fetchAPI from '../utils/API.js'
 
 import './MovieList.scss';
 
@@ -12,7 +13,7 @@ const MovieList = (props) => {
 
   useEffect(() => {
     fetchAPI({'s': props.searchTerm || 'super'})
-      .then(movies => setMovies(movies.Search));
+      .then(movies => act(() => setMovies(movies.Search)));
   }, []);
 
   return (
@@ -21,7 +22,7 @@ const MovieList = (props) => {
         <Col><h2>Movie List</h2></Col>
       </Row>
       <Row className="movie-list">
-        {movies.map(movie => <MovieCard {...movie}/>
+        {movies?.map(movie => <MovieCard {...movie}/>
         )};
       </Row>
     </Container>

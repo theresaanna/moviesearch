@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, ThemeProvider, Collapse } from 'react-bootstrap';
 
-import LeftNav from './components/LeftNav'
-import MovieList from './components/MovieList'
+import LeftNav from './components/LeftNav.js'
+import MovieList from './components/MovieList.js'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
