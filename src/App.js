@@ -18,6 +18,9 @@ function App() {
       minBreakpoint="xxs"
     >
       <header className="page-header">
+        // the animation and hamburger and x images are kinda wonky
+        // I didn't want to spend too too much time fiddling
+        // This should meet the functional requirements
         <div className={`hamburger d-sm-none show-${!menu}`} onClick={() => setMenu(!menu)} />
         <h1 className="page-title">Movie Search</h1>
       </header>
