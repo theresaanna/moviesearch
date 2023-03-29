@@ -6,21 +6,23 @@ import MovieList from './components/MovieList'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import './App.scss';
+
 import Hamburger from './hamburger.svg';
 import X from './x.svg';
 
 function App() {
   const [menu, setMenu] = useState(false);
 
+  /* the animation and hamburger and x images are kinda wonky
+     I didn't want to spend too too much time fiddling
+     This should meet the functional requirements */
   return (
     <ThemeProvider
       breakpoints={['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
       minBreakpoint="xxs"
     >
       <header className="page-header">
-        // the animation and hamburger and x images are kinda wonky
-        // I didn't want to spend too too much time fiddling
-        // This should meet the functional requirements
         <div className={`hamburger d-sm-none show-${!menu}`} onClick={() => setMenu(!menu)} />
         <h1 className="page-title">Movie Search</h1>
       </header>
