@@ -8,8 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.scss';
 
-import Hamburger from './hamburger.svg';
-import X from './x.svg';
+import './hamburger.svg';
+import './x.svg';
 
 function App() {
   const [menu, setMenu] = useState(false);

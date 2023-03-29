@@ -19,7 +19,7 @@ const MovieList = (props) => {
         .catch(error => setError(error));
     }
     fetchData();
-  }, []);
+  });
 
   return (
     <Container fluid className="movies">
@@ -28,7 +28,7 @@ const MovieList = (props) => {
       </Row>
       <Row className="movie-list">
         {error && <div>{error}</div>}
-        {movies?.map(movie => <MovieCard {...movie}/>
+        {movies?.map(movie => <MovieCard key={movie.Title} {...movie}/>
         )}
       </Row>
     </Container>

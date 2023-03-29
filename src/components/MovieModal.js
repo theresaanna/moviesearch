@@ -20,7 +20,7 @@ const MovieModal = (props) => {
         <div className="modal-plot"><span className="modal-label">Plot:</span> {props.Plot}</div>
         <div className="modal-language"><span className="modal-label">Language:</span> {props.Language}</div>
         <div className="modal-country"><span className="modal-label">Country:</span> {props.Country}</div>
-        <div className="modal-poster"><img src={props.Poster} /></div>
+        <div className="modal-poster"><img src={props.Poster} alt={`poster-${props.Title}`} /></div>
       </Modal.Body>
     </Modal>
   )
