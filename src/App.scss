@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/bootstrap";
+
 $medium-blue: rgb(25, 156, 193);
 $dark-blue: rgb(31, 72, 100);
 $medium-gray: rgb(229, 229, 229);
@@ -8,4 +10,41 @@ $dark-gray: rgb(102, 102, 102);
 .App.container-fluid {
   background-color: $light-gray;
   padding: 0;
+}
+
+.page-header {
+  background-color: $medium-blue;
+  color: $white;
+  display: flex;
+  margin-bottom: 0;
+  padding: .5rem 1rem;
+
+  .hamburger {
+    background: url('./hamburger.svg');
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+
+    &.show-false {
+      background: url('./x.svg');
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .left-nav-container {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .movie-list-container {
+    position: relative;
+    z-index: 0;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .left-nav-container {
+    position: relative;
+  }
 }

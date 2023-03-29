@@ -20,7 +20,7 @@ const MovieCard = (props) => {
 
   return(
     <>
-      <Col md="3" className="movie-card" onClick={handleShow}>
+      <Col sm="3" className="col-11 movie-card" onClick={handleShow}>
         <h3>{movie.Title}</h3>
         <div className="movie-year">{movie.Year}</div>
         <img src={movie.Poster} className="movie-poster" />
