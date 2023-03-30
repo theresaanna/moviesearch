@@ -23,7 +23,7 @@ const MovieCard = (props) => {
       .catch(error => setError(error));
     }
     fetchData();
-  });
+  }, [props.imdbID]);
 
   return(
     <>

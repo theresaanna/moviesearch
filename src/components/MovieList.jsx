@@ -19,7 +19,7 @@ const MovieList = (props) => {
         .catch(error => setError(error));
     }
     fetchData();
-  });
+  }, [props.searchTerm]);
 
   return (
     <Container fluid className="movies">
