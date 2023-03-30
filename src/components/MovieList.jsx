@@ -10,7 +10,7 @@ import './MovieList.scss';
 
 const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
