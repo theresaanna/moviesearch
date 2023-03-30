@@ -4,8 +4,8 @@
 
 I have not tried a prod build, I've been using the app in dev mode.
 
-### `npm install`
 ### `cd moviesearch`
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.\
