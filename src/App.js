@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, ThemeProvider, Collapse } from 'react-bootstrap';
+import { act } from '@testing-library/react';
 
-import LeftNav from './components/LeftNav.js'
-import MovieList from './components/MovieList.jsx'
+import fetchAPI from './utils/API.js';
+
+import LeftNav from './components/LeftNav.js';
+import MovieList from './components/MovieList.jsx';
+import Search from './components/Search.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,10 +17,25 @@ import './x.svg';
 
 function App() {
   const [menu, setMenu] = useState(false);
+	const [error, setError] = useState(null);
+	const [movies, setMovies] = useState([]);
+	const [search, setSearch] = useState('super');
 
-  /* the animation and hamburger and x images are kinda wonky
-     I didn't want to spend too too much time fiddling
-     This should meet the functional requirements */
+	const fetchData = async () => {
+		fetchAPI({'s': search})
+		.then(movies => act(() => setMovies(movies)))
+		.catch(error => setError(error));
+	}
+
+	const handleSearch = (event) => {
+		event.preventDefault();
+		setSearch(event.target.searchTerm.value);
+	}
+
+	useEffect(() => {
+		fetchData();
+	}, [search]);
+
   return (
     <ThemeProvider
       breakpoints={['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
@@ -25,6 +44,7 @@ function App() {
       <header className="page-header">
         <div className={`hamburger d-sm-none show-${!menu}`} onClick={() => setMenu(!menu)} />
         <h1 className="page-title">Movie Search</h1>
+				<Search handleSearch={handleSearch} />
       </header>
       <Container fluid className="App">
         <Row>
@@ -34,7 +54,10 @@ function App() {
             </Col>
           </Collapse>
 
-          <Col xs="12" sm="9" className="movie-list-container"><MovieList/></Col>
+          <Col xs="12" sm="9" className="movie-list-container">
+						{error && <div>{error}</div>}
+						<MovieList movies={movies}/>
+					</Col>
         </Row>
       </Container>
     </ThemeProvider>
