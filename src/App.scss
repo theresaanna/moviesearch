@@ -15,13 +15,13 @@
   padding: .5rem 1rem;
 
   .hamburger {
-    background: url('./hamburger.svg');
+    background: url('./img/hamburger.svg');
     cursor: pointer;
     height: 2rem;
     width: 2rem;
 
     &.show-false {
-      background: url('./x.svg');
+      background: url('./img/x.svg');
     }
   }
 }

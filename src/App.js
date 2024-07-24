@@ -12,8 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.scss';
 
-import './hamburger.svg';
-import './x.svg';
+import './img/hamburger.svg';
+import './img/x.svg';
 
 function App() {
   const [menu, setMenu] = useState(false);
