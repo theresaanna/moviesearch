@@ -13,7 +13,7 @@ describe('MovieList', () => {
 
   test('renders movie cards', async () => {
     fetchMock.mockResolvedValue({status: 200, json: jest.fn(() => data)});
-    const movieList = render(<MovieList/>)
+    const movieList = render(<MovieList movies={data} />)
     expect(await screen.findByText("Super 8")).toBeInTheDocument();
     const containers = movieList.getAllByTestId("movie-card");
     expect(containers.length).toBe(10);

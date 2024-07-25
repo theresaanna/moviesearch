@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { act } from '@testing-library/react';
 
 import MovieCard from './MovieCard.jsx';
 
