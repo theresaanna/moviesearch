@@ -34,6 +34,12 @@ function App() {
 			.catch(error => setError(error));
 	}
 
+	const fetchYear = async (year) => {
+		await fetchAPI({'s': search, 'y': year})
+			.then(movies => act(() => setMovies(movies)))
+			.catch(error => setError(error));
+	}
+
 	const handleSearch = (event) => {
 		event.preventDefault();
 		setSearch(event.target.searchTerm.value);
@@ -41,6 +47,11 @@ function App() {
 
 	const handleCardClick = (imdbID) => {
 		fetchModalData(imdbID);
+	}
+
+	const handleCatClick = (event) => {
+		event.preventDefault();
+		fetchYear(event.target.innerText)
 	}
 
 	useEffect(() => {
@@ -61,7 +72,7 @@ function App() {
         <Row>
           <Collapse in={menu} dimension="width" className="d-sm-block">
             <Col xs="2" sm="3" className="left-nav-container">
-              <LeftNav/>
+              <LeftNav handleCatClick={handleCatClick}/>
             </Col>
           </Collapse>
 

@@ -1,9 +1,9 @@
 import './LeftNav.scss';
 
 function LeftNav(props) {
-  const lenArray = [...Array(props.len || 8).keys()];
-  const lis = lenArray.slice(1).map((num) =>
-    <li key={num}>Menu {num}</li>
+	const yearArray = [2024, 2023, 2022, 2021, 2020, 2019];
+  const lis = yearArray.slice().map((year) =>
+    <li key={year}><a href="#" name="year" onClick={props.handleCatClick}>{year}</a></li>
   );
   return (
     <ul className="left-nav">
