@@ -9,30 +9,21 @@ import fetchAPI from '../utils/API.js'
 import './MovieCard.scss';
 
 const MovieCard = (props) => {
-  const [movie, setMovie] = useState([]);
   const [modal, setModal] = useState(false);
-  const [, setError] = useState(null)
 
   const handleClose = () => setModal(false);
-  const handleShow = () => setModal(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      fetchAPI({'i': props.imdbID})
-      .then(movie => act(() => setMovie(movie)))
-      .catch(error => setError(error));
-    }
-    fetchData();
-  }, [props.imdbID]);
-
+  const handleShow = (event) => {
+		props.handleCardClick(props.movie.imdbID);
+		setModal(true);
+	}
   return(
     <>
       <Col data-testid="movie-card" sm="3" className="col-11 movie-card" onClick={handleShow}>
-        <h3>{movie.Title}</h3>
-        <div className="movie-year">{movie.Year}</div>
-        <img src={movie.Poster} className="movie-poster" alt={`poster-${movie.Title}`} />
+        <h3>{props.movie.Title}</h3>
+        <div className="movie-year">{props.movie.Year}</div>
+        <img src={props.movie.Poster} className="movie-poster" alt={`poster-${props.movie.Title}`} />
       </Col>
-      <MovieModal modal={modal} handleClose={handleClose} {...movie}/>
+      <MovieModal modal={modal} handleClose={handleClose} {...props.activeMovie}/>
     </>
   );
 }

@@ -13,7 +13,7 @@ const MovieList = (props) => {
         <Col><h2>Movie List</h2></Col>
       </Row>
       <Row className="movie-list">
-        {props.movies.Search?.map(movie => <MovieCard key={movie.Title} {...movie}/>
+        {props.movies.Search?.map(movie => <MovieCard key={movie.Title} handleCardClick={props.handleCardClick} activeMovie={props.activeMovie} movie={movie} {...props}/>
         )}
       </Row>
     </Container>

@@ -20,11 +20,18 @@ function App() {
 	const [error, setError] = useState(null);
 	const [movies, setMovies] = useState([]);
 	const [search, setSearch] = useState('super');
+	const [activeMovie, setActiveMovie] = useState([]);
 
-	const fetchData = async () => {
-		fetchAPI({'s': search})
+	const fetchSearchData = async () => {
+		await fetchAPI({'s': search})
 		.then(movies => act(() => setMovies(movies)))
 		.catch(error => setError(error));
+	}
+
+	const fetchModalData = async (imdbID) => {
+		await fetchAPI({'i': imdbID})
+			.then(movie => act(() => setActiveMovie(movie)))
+			.catch(error => setError(error));
 	}
 
 	const handleSearch = (event) => {
@@ -32,9 +39,13 @@ function App() {
 		setSearch(event.target.searchTerm.value);
 	}
 
+	const handleCardClick = (imdbID) => {
+		fetchModalData(imdbID);
+	}
+
 	useEffect(() => {
-		fetchData();
-	}, [search]);
+		fetchSearchData();
+	}, [search])
 
   return (
     <ThemeProvider
@@ -56,7 +67,7 @@ function App() {
 
           <Col xs="12" sm="9" className="movie-list-container">
 						{error && <div>{error}</div>}
-						<MovieList movies={movies}/>
+						<MovieList movies={movies} handleCardClick={handleCardClick} activeMovie={activeMovie} />
 					</Col>
         </Row>
       </Container>
