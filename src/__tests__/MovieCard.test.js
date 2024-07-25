@@ -14,7 +14,7 @@ describe('MovieCard', () => {
   test('renders all elements to card', async () => {
     const imdbid = {"imdbID": "tt8912936"};
     fetchMock.mockResolvedValue({status: 200, json: jest.fn(() => data)});
-    const movieCard = render(<MovieCard {...imdbid}/>)
+    const movieCard = render(<MovieCard movie={data} />)
     /* title */
     expect(await screen.findByText("DC League of Super-Pets")).toBeInTheDocument();
     /* year */
