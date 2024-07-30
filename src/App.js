@@ -42,7 +42,7 @@ function App() {
 
 	const handleSearch = (event) => {
 		event.preventDefault();
-		setSearch(event.target.searchTerm.value);
+		setSearch(event.target.elements.searchTerm.value);
 	}
 
 	const handleCardClick = (imdbID) => {
